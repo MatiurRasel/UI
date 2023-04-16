@@ -9,6 +9,8 @@ import {
   ValidatorFn, 
   Validators 
 } from '@angular/forms';
+import { User, UserType } from '../models/models';
+import { ApiService } from '../services/api.service';
 
 @Component({
   selector: 'app-register',
@@ -20,7 +22,7 @@ export class RegisterComponent {
  responseMsg: string ='';
  registerForm: FormGroup;
 
- constructor(private fb: FormBuilder) {
+ constructor(private fb: FormBuilder,private api:ApiService) {
    this.registerForm = fb.group(
     {
      firstName:fb.control('',[Validators.required]),
@@ -39,7 +41,31 @@ export class RegisterComponent {
    );
  }
 
- register() {}
+ register() {
+let user: User={
+  id:0,
+  firstName:this.registerForm.get('firstName')?.value,
+  lastName:this.registerForm.get('lastName')?.value,
+  email:this.registerForm.get('email')?.value,
+  userType:UserType.USER,
+  mobile:'',
+  password:this.registerForm.get('password')?.value,
+  blocked:false,
+  active:false,
+  createdOn:'',
+  fine:0,
+};
+this.api.createAccount(user).subscribe({
+  next: (res: any) => {
+    console.log(res);
+    this.responseMsg = res.toString();
+  },
+  error:(err:any)=>{
+    console.log('Error: ');
+    console.log(err);
+  },
+})
+ }
  
  getFirstNameErrors() {
    if(this.FirstName.hasError('required')) return 'Field is required!';

@@ -1,1 +1,20 @@
-<p>library works!</p>
+<mat-form-field appearance="outline" color="accent">
+    <mat-label>Search Books</mat-label>
+    <input matInput>
+    <button mat-icon-button matSuffix>
+        <mat-icon>search</mat-icon>
+    </button>
+</mat-form-field>
+
+<mat-card>
+    <mat-card-content>Showing results for 10 books</mat-card-content>
+</mat-card>
+
+<mat-accordion multi="true">
+    <mat-expansion-panel expanded>
+        <mat-expansion-panel-header>
+            <mat-panel-title>Category</mat-panel-title>
+            <mat-panel-description>Sub Category</mat-panel-description>
+        </mat-expansion-panel-header>
+    </mat-expansion-panel>
+</mat-accordion>

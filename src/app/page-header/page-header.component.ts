@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
+import { ApiService } from '../services/api.service';
 
 @Component({
   selector: 'app-page-header',
@@ -7,4 +8,10 @@ import { Component, EventEmitter, Output } from '@angular/core';
 })
 export class PageHeaderComponent {
 @Output() menuClicked = new EventEmitter<boolean>();
+constructor(public api:ApiService){
+
+}
+logOut(){
+  this.api.deleteToken();
+}
 }

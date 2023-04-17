@@ -13,6 +13,7 @@ import { LibraryComponent } from './library/library.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
+import { JwtModule } from '@auth0/angular-jwt';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,15 @@ import { FormsModule,ReactiveFormsModule } from '@angular/forms';
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    JwtModule.forRoot({
+      config:{
+        tokenGetter:()=>{
+          return localStorage.getItem('access_token');
+        },
+        allowedDomains:['localhost:7183'],
+      },
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent]

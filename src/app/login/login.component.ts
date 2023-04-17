@@ -1,5 +1,12 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { 
+  FormBuilder, 
+  FormControl, 
+  FormGroup, 
+  Validators 
+} from '@angular/forms';
+import { ApiService } from '../services/api.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -8,10 +15,13 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 })
 export class LoginComponent {
   hide = true;
+  responseMsg: string='';
   loginForm: FormGroup;
-  responeMsg: string='';
 
-  constructor(private fb: FormBuilder){
+  constructor(
+    private fb: FormBuilder,
+    private api:ApiService,
+    private router: Router){
     this.loginForm = fb.group({
       email:fb.control('',[Validators.required,Validators.email]),
       password: fb.control('',[
@@ -27,11 +37,30 @@ export class LoginComponent {
       email:this.loginForm.get('email')?.value,
       password:this.loginForm.get('password')?.value,
     };
+
+    this.api.login(loginInfo).subscribe({
+      next:(res: any) =>{
+        if(res.toString()==='Invalid')
+        {
+          this.responseMsg = 'Invalid Credentials!';
+        }
+        else{
+          this.responseMsg = '';
+          this.api.saveToken(res.toString());
+          this.router.navigateByUrl("/books/library");
+        }
+
+      },
+      error:(err: any)=>{
+        console.log('Error: ');
+        console.log(err);
+      }
+    });
   }
 
   getEmailErrors() {
     if(this.Email.hasError('required')) return 'Email is required!';
-    if(this.Email.hasError('email')) return 'Email is required!';
+    if(this.Email.hasError('email')) return 'Email is invalid.';
     return '';
   }
   

@@ -21,3 +21,14 @@ export interface User {
     userType: UserType;
     fine: number;
   }
+
+  export interface Book {
+    id:number;
+    title:string;
+    category:string;
+    subCategory:string;
+    price:number;
+    available:boolean;
+    count?:number;
+    author:string;
+  }

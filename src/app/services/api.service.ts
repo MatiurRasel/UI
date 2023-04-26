@@ -61,4 +61,9 @@ baseUrl = "https://localhost:7183/api/Library/";
   getAllBooks(){
     return this.http.get<Book[]>(this.baseUrl+'GetAllBooks');
   }
+  orderBook(userId:number,bookId:number){
+    return this.http.get(this.baseUrl+'OrderBook/'+userId+'/'+bookId,{
+      responseType:'text',
+    })
+  }
 }

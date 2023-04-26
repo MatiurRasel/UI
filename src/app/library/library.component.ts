@@ -62,5 +62,28 @@ getBookCount(){
 
 search(value: string){
   value = value.toLowerCase();
+  this.updateList();
+  if(value.length > 0){
+    this.booksToDisplay = this.booksToDisplay.filter((categoryBooks)=>{
+      categoryBooks.books = categoryBooks.books.filter(
+        (book) =>
+        book.title.toLowerCase().includes(value) ||
+        book.author.toLowerCase().includes(value)
+      );
+      return categoryBooks.books.length > 0;
+    });
+  }
+}
+
+orderBook(book:Book){
+let userId = this.api.getTokenUserInfo()?.id??0;
+this.api.orderBook(userId,book.id).subscribe({
+  next:(res:any)=>{
+    if(res ==='success'){
+      book.available = false;
+    }
+  },
+  error:(err:any)=>console.log(err),
+});
 }
 }

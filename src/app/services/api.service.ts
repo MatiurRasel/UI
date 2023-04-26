@@ -1,6 +1,6 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { User, UserType } from '../models/models';
+import { Book, User, UserType } from '../models/models';
 import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Injectable({
@@ -56,5 +56,9 @@ baseUrl = "https://localhost:7183/api/Library/";
       userType:token.userType ==='USER'?UserType.USER:UserType.ADMIN,
     };
     return user;
+  }
+
+  getAllBooks(){
+    return this.http.get<Book[]>(this.baseUrl+'GetAllBooks');
   }
 }

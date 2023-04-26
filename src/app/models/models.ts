@@ -32,3 +32,9 @@ export interface User {
     count?:number;
     author:string;
   }
+
+  export interface CategoryBooks{
+    category: string;
+    subCategory: string;
+    books: Book[];
+  }

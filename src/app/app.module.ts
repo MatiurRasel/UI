@@ -14,6 +14,8 @@ import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { JwtModule } from '@auth0/angular-jwt';
+import { OrderComponent } from './order/order.component';
+import { OrdersComponent } from './orders/orders.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +26,8 @@ import { JwtModule } from '@auth0/angular-jwt';
     LibraryComponent,
     RegisterComponent,
     LoginComponent,
+    OrderComponent,
+    OrdersComponent,
   ],
   imports: [
     BrowserModule,

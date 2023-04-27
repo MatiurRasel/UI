@@ -19,7 +19,7 @@ mat-card{
         justify-content: space-between;
     }
 }
-mat-accordian{
+mat-accordion{
     mat-panel-title{
         font-size: 1.4rem;
         letter-spacing: 2px;
@@ -39,8 +39,8 @@ table{
     .mat-cell,
     .mat-header-cell{
         font-size: 1.2rem;
-        // &:is(.mat-header-cell){
-        //     font-style: italic;
-        // }
+        &:is(.mat-header-cell){
+            font-style: italic;
+        }
     }
 }

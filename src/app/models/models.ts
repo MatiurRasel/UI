@@ -38,3 +38,13 @@ export interface User {
     subCategory: string;
     books: Book[];
   }
+
+  export interface Order{
+    id:number;
+    userid:number;
+    bookid:number;
+    name:string;
+    booktitle:string;
+    orderedon:string;
+    returned: boolean;
+  }

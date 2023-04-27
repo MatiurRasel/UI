@@ -4,6 +4,9 @@ import { LibraryComponent } from './library/library.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { AuthenticationGuard } from './guards/authentication.guard';
+import { OrderComponent } from './order/order.component';
+import { OrdersComponent } from './orders/orders.component';
+import { AuthorizationGuard } from './guards/authorization.guard';
 
 const routes: Routes = [
   {
@@ -18,6 +21,16 @@ const routes: Routes = [
   {
     path: 'register',
     component: RegisterComponent,
+  },
+  {
+    path: 'users/order',
+    component: OrderComponent,
+    canActivate:[AuthenticationGuard],
+  },
+  {
+    path: 'users/all-orders',
+    component: OrdersComponent,
+    canActivate:[AuthorizationGuard],
   }
 ];
 

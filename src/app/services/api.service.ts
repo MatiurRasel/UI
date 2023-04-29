@@ -2,6 +2,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Book, Order, User, UserType } from '../models/models';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -73,5 +74,25 @@ baseUrl = "https://localhost:7183/api/Library/";
 
   getAllOrders(){
     return this.http.get<Order[]>(this.baseUrl+'GetAllOrders');
+  }
+
+  returnBook(bookId:string,userId:string){
+    return this.http.get(this.baseUrl+'ReturnBook/'+bookId+'/'+userId,{
+      responseType:'text',
+    });
+  }
+
+  getAllUsers(){
+    return this.http.get<User[]>(this.baseUrl+'GetAllUsers')
+    .pipe(
+      map((users)=>{
+        users.map((user)=>{
+          let temp: User = user;
+          temp.userType = user.userType == 0 ? UserType.USER:UserType.ADMIN;
+          return temp;
+        });
+      })
+
+    ); 
   }
 }

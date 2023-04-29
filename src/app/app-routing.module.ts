@@ -7,6 +7,8 @@ import { AuthenticationGuard } from './guards/authentication.guard';
 import { OrderComponent } from './order/order.component';
 import { OrdersComponent } from './orders/orders.component';
 import { AuthorizationGuard } from './guards/authorization.guard';
+import { ReturnBookComponent } from './return-book/return-book.component';
+import { UsersListComponent } from './users-list/users-list.component';
 
 const routes: Routes = [
   {
@@ -30,6 +32,16 @@ const routes: Routes = [
   {
     path: 'users/all-orders',
     component: OrdersComponent,
+    canActivate:[AuthorizationGuard],
+  },
+  {
+    path: 'books/return',
+    component: ReturnBookComponent,
+    canActivate:[AuthorizationGuard],
+  },
+  {
+    path: 'users/list',
+    component: UsersListComponent,
     canActivate:[AuthorizationGuard],
   }
 ];

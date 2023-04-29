@@ -16,6 +16,8 @@ import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { JwtModule } from '@auth0/angular-jwt';
 import { OrderComponent } from './order/order.component';
 import { OrdersComponent } from './orders/orders.component';
+import { ReturnBookComponent } from './return-book/return-book.component';
+import { UsersListComponent } from './users-list/users-list.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +30,8 @@ import { OrdersComponent } from './orders/orders.component';
     LoginComponent,
     OrderComponent,
     OrdersComponent,
+    ReturnBookComponent,
+    UsersListComponent,
   ],
   imports: [
     BrowserModule,

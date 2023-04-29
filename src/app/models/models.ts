@@ -4,8 +4,10 @@ export interface SideNavItem {
 }
 
 export enum UserType {
-    ADMIN,
-    USER,
+    
+  USER,
+  ADMIN,
+    
   }
   
 export interface User {

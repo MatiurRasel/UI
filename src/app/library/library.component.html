@@ -7,7 +7,15 @@
 </mat-form-field>
 
 <mat-card>
-    <mat-card-content>Showing results for {{getBookCount()}} books</mat-card-content>
+    <mat-card-content>
+        <div>
+            Showing results for {{getBookCount()}} books
+        </div>
+        <div *ngIf="isBlocked()">
+            You are Blocked, so you can't order.
+        </div>
+    
+    </mat-card-content>
 </mat-card>
 
 <mat-accordion multi="true">
@@ -54,7 +62,7 @@
             <ng-container matColumnDef="order">
                 <th mat-header-cell *matHeaderCellDef> Order </th>
                 <td mat-cell *matCellDef="let element">
-                    <button mat-raised-button color="accent" [disabled]="!element.available"
+                    <button mat-raised-button color="accent" [disabled]="!element.available || isBlocked()"
                     (click)="orderBook(element)">
                         Order
                     </button>

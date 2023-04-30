@@ -50,3 +50,8 @@ export interface User {
     orderedon:string;
     returned: boolean;
   }
+
+  export interface Category {
+    name: string;
+    children?: Category[];
+  }

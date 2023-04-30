@@ -47,7 +47,14 @@ export class LoginComponent {
         else{
           this.responseMsg = '';
           this.api.saveToken(res.toString());
-          this.router.navigateByUrl("/books/library");
+          let isActive = this.api.getTokenUserInfo()?.active ?? false;
+          if(isActive) {
+            this.router.navigateByUrl("/books/library");
+          }
+          else {
+            this.responseMsg='You are not Active!';
+            this.api.deleteToken();
+          }
         }
 
       },

@@ -9,6 +9,9 @@ import { OrdersComponent } from './orders/orders.component';
 import { AuthorizationGuard } from './guards/authorization.guard';
 import { ReturnBookComponent } from './return-book/return-book.component';
 import { UsersListComponent } from './users-list/users-list.component';
+import { ManageBooksComponent } from './manage-books/manage-books.component';
+import { ManageCategoriesComponent } from './manage-categories/manage-categories.component';
+import { ProfileComponent } from './profile/profile.component';
 
 const routes: Routes = [
   {
@@ -43,6 +46,21 @@ const routes: Routes = [
     path: 'users/list',
     component: UsersListComponent,
     canActivate:[AuthorizationGuard],
+  },
+  {
+    path: 'books/maintenance',
+    component: ManageBooksComponent,
+    canActivate:[AuthorizationGuard],
+  },
+  {
+    path: 'books/categories',
+    component: ManageCategoriesComponent,
+    canActivate:[AuthorizationGuard],
+  },
+  {
+    path: 'users/profile',
+    component: ProfileComponent,
+    canActivate:[AuthenticationGuard],
   }
 ];
 

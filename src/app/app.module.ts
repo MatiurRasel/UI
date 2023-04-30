@@ -18,6 +18,9 @@ import { OrderComponent } from './order/order.component';
 import { OrdersComponent } from './orders/orders.component';
 import { ReturnBookComponent } from './return-book/return-book.component';
 import { UsersListComponent } from './users-list/users-list.component';
+import { ManageBooksComponent } from './manage-books/manage-books.component';
+import { ManageCategoriesComponent } from './manage-categories/manage-categories.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +35,9 @@ import { UsersListComponent } from './users-list/users-list.component';
     OrdersComponent,
     ReturnBookComponent,
     UsersListComponent,
+    ManageBooksComponent,
+    ManageCategoriesComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,
